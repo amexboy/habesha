@@ -34,28 +34,28 @@
         </div>
     @empty
         <h1>Sorry, No images were found on our servers.</h1>
-        @endforelse
+    @endforelse
 
-                <!-- Modal -->
-        <div class="modal fade" id="image_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+            <!-- Modal -->
+    <div class="modal fade" id="image_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
 
-                    </div>
-                    <div class="modal-body">
-                        <img class="img-responsive item" src="">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary select">Select</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive item" src="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary select">Select</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 <script>
     var select = function () {
