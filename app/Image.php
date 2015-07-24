@@ -13,5 +13,5 @@ class Image extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'hash', 'width', 'height'];
+    protected $fillable = ['type', 'hash', 'description', 'width', 'height'];
 }

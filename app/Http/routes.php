@@ -12,6 +12,8 @@
 */
 
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,34 +27,38 @@ Route::controller('article', 'ArticleController');
 
 Route::controller('auth', 'Auth\AuthController');
 
-Route::any('/uploaded_images/{id}', function($id){
+Route::any('/uploaded_images/{id}', function ($id) {
     $image = \App\Image::where('id', $id)->firstOrFail();
-    if(!file_exists(storage_path("images/$image->hash.$image->type"))){
+    if (!file_exists(storage_path("images/$image->hash.$image->type"))) {
         return response("Image not found on our servers!", 404);
     }
-    return response()->download(storage_path("images/$image->hash.$image->type"), null,[],'');
+    return response()->download(storage_path("images/$image->hash.$image->type"), null, [], '');
 });
 
-Route::any('/images/browse', function () {
-    return view('browse', ['images'=>\App\Image::all()]);
+Route::any('/images/browse', function (Request $request) {
+    return view('browse', ['images' => \App\Image::all(),
+        'CKEditorFuncNum' => $request->input('CKEditorFuncNum', '0')
+    ]);
 });
-Route::any('/images/upload', function () {
+Route::any('/images/upload', function (Request $request) {
     $message = '';
     $url = '';
 
-    if(isset($_FILES['upload'])){
+    if ($request->hasFile('upload')) {
+        $file = $request->file('upload');
         $filename = $_FILES['upload']['tmp_name'];
-//        $base64=base64_encode(file_get_contents($filename));
-        $ext = explode("/", mime_content_type($filename))[1];
-        $hash = md5_file($filename);
 
-        move_uploaded_file($filename, storage_path("images/")."$hash.$ext");
-        $image = \App\Image::create([
-            'type'=>$ext,
-            'hash'=>$hash
+        $ext = $file->guessExtension();
+        $hash = md5_file($file->getPath());
+
+        $file->move(storage_path("images/"), "$hash.$ext");
+        \App\Image::create([
+            'type' => $ext,
+            'hash' => $hash,
+            'description' => $request->input('description', "")
         ]);
-        $message = "Uploaded successfully!";
-    }else{
+        $message = "Uploaded successfully! $hash";
+    } else {
         $message = "File not uploaded, please try again!";
     }
     $funcNum = $_REQUEST['CKEditorFuncNum'];

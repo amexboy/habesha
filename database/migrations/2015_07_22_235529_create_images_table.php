@@ -12,10 +12,12 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type', 100);
             $table->string('hash');
+            $table->string('description')->nullable();
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();
             $table->timestamps();

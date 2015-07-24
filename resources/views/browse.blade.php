@@ -21,7 +21,7 @@
                 <img class="insert" src="{{url("/uploaded_images/$image->id")}}">
 
                 <div class="caption">
-                    <p>Discription of the image</p>
+                    <p>{{$image->description}}</p>
 
                     <p>
                         <a href="javascript:void(0)" class="btn btn-sm btn-primary select" role="button"
@@ -59,7 +59,7 @@
 </div>
 <script>
     var select = function () {
-        window.opener.CKEDITOR.tools.callFunction({{$_REQUEST['CKEditorFuncNum'] or 0}}, $(this).attr('data-src'))
+        window.opener.CKEDITOR.tools.callFunction({{$CKEditorFuncNum}}, $(this).attr('data-src'))
         window.close();
     }
 
