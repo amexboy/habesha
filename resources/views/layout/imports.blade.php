@@ -28,11 +28,6 @@
             //Took me a while to figure it out, but thanks to console.log(dialogDefinition),
             // i got it done!
             upload.action += '&_token={!! csrf_token() !!}';
-
-            upload.add({
-                type:'text'
-                id:'_description'
-            })
         }
     });
 </script>
