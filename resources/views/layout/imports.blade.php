@@ -8,6 +8,7 @@
 <link href="{{url('/')}}/styles/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link href="{{url('/')}}/styles/lean-slider.css" rel="stylesheet" type="text/css"/>
 <link href="{{url('/')}}/styles/sample-styles.css" rel="stylesheet" type="text/css"/>
+<link href="{{url('/')}}/styles/main.css" rel="stylesheet" type="text/css"/>
 <script>
     /**
      * Laravel wants the csrf_token to come with the post requests,
@@ -30,4 +31,28 @@
             upload.action += '&_token={!! csrf_token() !!}';
         }
     });
+
+    CKEDITOR.on('instanceCreated', function (event) {
+        var editor = event.editor,
+                element = editor.element;
+
+        if (element.is('h1', 'h2', 'h3') || element.getAttribute('id') == 'taglist') {
+
+            editor.on('configLoaded', function () {
+
+                editor.config.removePlugins = 'colorbutton,find,flash,font,' +
+                'forms,iframe,image,newpage,removeformat,' +
+                'smiley,specialchar,stylescombo,templates';
+
+                // Rearrange the layout of the toolbar.
+                editor.config.toolbarGroups = [
+                    {name: 'editing', groups: ['basicstyles', 'links']},
+                    {name: 'undo'},
+                    {name: 'clipboard', groups: ['selection', 'clipboard']},
+                    {name: 'about'}
+                ];
+            });
+        }
+    });
+
 </script>

@@ -46,7 +46,6 @@ Route::any('/images/upload', function (Request $request) {
 
     if ($request->hasFile('upload')) {
         $file = $request->file('upload');
-        $filename = $_FILES['upload']['tmp_name'];
 
         $ext = $file->guessExtension();
         $hash = md5_file($file->getPath());
