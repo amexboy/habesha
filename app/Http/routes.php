@@ -27,7 +27,14 @@ Route::controller('article', 'ArticleController');
 
 Route::controller('auth', 'Auth\AuthController');
 
-Route::any('/uploaded_images/{id}', function ($id) {
+Route::any('/images/browse', function (Request $request) {
+    return view('browse', [
+        'images' => \App\Image::all(),
+        'CKEditorFuncNum' => $request->input('CKEditorFuncNum', '0')
+    ]);
+});
+
+Route::any('/images/{id}', function ($id) {
     $image = \App\Image::where('id', $id)->firstOrFail();
     if (!file_exists(storage_path("images/$image->hash.$image->type"))) {
         return response("Image not found on our servers!", 404);

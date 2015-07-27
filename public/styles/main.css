@@ -1,0 +1,7 @@
+h1 .cke_editable_inline {
+    min-height:0 ;
+}
+
+.cke_editable_inline {
+    min-height:150px;
+}
