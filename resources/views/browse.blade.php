@@ -18,44 +18,44 @@
     @forelse($images as $image)
         <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
-                <img class="insert" src="{{url("/uploaded_images/$image->id")}}">
+                <img class="insert" src="{{url("/images/$image->id")}}" alt="{{$image->alt}}">
 
                 <div class="caption">
-                    <p>{{$image->description}}</p>
+                    <p>{!!$image->description!!}</p>
 
                     <p>
                         <a href="javascript:void(0)" class="btn btn-sm btn-primary select" role="button"
-                           data-src="{{url("/uploaded_images/$image->id")}}">Select</a>
+                           data-src="{{url("/images/$image->id")}}">Select</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-default preview" role="button"
-                           data-src="{{url("/uploaded_images/$image->id")}}">Preview</a>
+                           data-src="{{url("/images/$image->id")}}">Preview</a>
                     </p>
                 </div>
             </div>
         </div>
     @empty
         <h1>Sorry, No images were found on our servers.</h1>
-    @endforelse
+        @endforelse
 
-            <!-- Modal -->
-    <div class="modal fade" id="image_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
+                <!-- Modal -->
+        <div class="modal fade" id="image_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
 
-                </div>
-                <div class="modal-body">
-                    <img class="img-responsive item" src="">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary select">Select</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="img-responsive item" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary select">Select</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <script>
     var select = function () {

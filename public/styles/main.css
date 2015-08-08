@@ -1,7 +1,92 @@
 h1 .cke_editable_inline {
-    min-height:0 ;
+    min-height: 0;
 }
 
 .cke_editable_inline {
-    min-height:150px;
+    min-height: 100px;
+    border: 1px solid #D7D7D7;
+}
+
+.images {
+    border: 1px solid #D7D7D7;
+    padding: 15px;
+}
+
+.images .image-wrapper {
+    min-width: 195px;
+    box-shadow: 0 0 10px 0 #AAA;
+    margin: 5px;
+    display: inline-block;
+}
+
+.images .image-wrapper:hover {
+    /*width: 200px;*/
+    box-shadow: 0 0 10px 0px #000;
+}
+
+body {
+    min-width: 650px;
+    overflow: hidden;
+}
+
+.carousel-inner .item {
+    width: 800px;
+    height: 400px;
+}
+
+.carousel {
+    width: 800px;
+    height: 400px;
+}
+
+.row {
+    position: absolute;
+    margin: 50px 0 0;
+    /*padding: 50px 0 0;*/
+    width: 100%;
+    background-color: #ffffff;
+    top: -1000px;
+}
+
+#home {
+    min-height: 300px;
+    background-color: rgba(100, 140, 173, 0.5);
+}
+#services {
+    min-height: 300px;
+    background-color: rgba(4, 140, 173, 0.5);
+}
+#menu {
+    min-height: 300px;
+    background-color: rgba(50, 140, 173, 0.5);
+}
+#contact {
+    min-height: 300px;
+    background-color: rgba(200, 140, 173, 0.5);
+}
+
+.menu {
+    overflow-x: hidden;
+    height: 300px;
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.menu .item {
+    display: inline-block;
+    max-height: 300px;
+    width: 350px;
+    white-space: normal;
+    font-size: medium;
+    margin: 0;
+}
+
+.menu .item img {
+    width: 300px;
+    height: 150px;
+}
+
+#menu_wrapper {
+    /*position: relative;*/
+    /*top: 50%;*/
 }

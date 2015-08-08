@@ -15,9 +15,9 @@ class CreateImagesTable extends Migration
         $this->down();
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type', 100);
-            $table->string('hash');
+            $table->string('file_name');
             $table->string('description')->nullable();
+            $table->string('alt')->nullable();
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();
             $table->timestamps();
